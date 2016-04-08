@@ -1,3 +1,6 @@
+# fork of anuular-thumbnails:
+  added hack to enable data binding for {{}} in AngularJS
+
 # angular-thumbnails
 
 AngularJS directive to render thumbnails of images, videos, and PDF files in canvas elements.
