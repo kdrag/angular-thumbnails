@@ -1,4 +1,4 @@
-# fork of anuular-thumbnails:
+# Fork of angular-thumbnails:
   added hack to enable data binding for {{}} in AngularJS
 
 # angular-thumbnails
