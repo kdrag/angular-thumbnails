@@ -96,7 +96,21 @@
                     canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
                 });
             }, false);
-            img.src = scope.source;
+
+            img.src=scope.source;
+            console.log("scope.source: " + scope.source);
+            // 'http://localhost:8100/'/img/bg_cover_01.png'
+
+            var length=img.src.length;
+            var sublength=scope.source.length;
+            var diff=length-sublength;
+            var val = img.src.substring(length-sublength+1, length-1);
+            var pre = img.src.substring(0, length-sublength-1);
+            console.log("val: " + val);
+            //img.src=pre+val;
+            img.src=val;
+            console.log("img.src: " + img.src);
+
         };
         return this;
     }
@@ -116,15 +130,25 @@
                         renderer.render();
                     }
                 };
+
+
+
                 element.append(canvas);
                 if (scope.fileType === "pdf") {
                     renderer = new PdfRenderer(scope, canvas);
                 } else if (scope.fileType === "image") {
+
                     renderer = new ImgRenderer(scope, canvas);
                 } else if (scope.fileType === "video") {
                     renderer = new VideoRenderer(scope, element, canvas);
                 }
+
                 scope.$watch("source + fileType + scale + maxHeight + maxWidth", renderFunc);
+
+                attrs.$observe('source', function(value) {
+                  console.log('value is: ' + value);
+                  scope.source=value;
+                });
             }
         };
     });
